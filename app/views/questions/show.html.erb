@@ -1,0 +1,7 @@
+<h2>質問者</h2>
+<%= image_tag @question.user.image.url, fallback: "no_image.jpg", size:100 %>
+<%= link_to @question.user.user_name,user_path(@question.user.id) %>
+<h2>タイトル</h2>
+<p><%= @question.title %></p>
+<h2>質問内容</h2>
+<p><%= @question.question_content %></p>

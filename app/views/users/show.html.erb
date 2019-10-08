@@ -1,0 +1,7 @@
+<% if @user.image? %>
+    <%= image_tag @user.image.url, fallback: "no_image.jpg", size:200 %>
+<% end %>
+<p>ユーザー名</p>
+<%= @user.user_name %>
+<p>メールアドレス</p>
+<%= @user.email %>

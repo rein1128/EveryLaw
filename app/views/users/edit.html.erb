@@ -1,0 +1,17 @@
+<div class="container">
+      <%= form_for(@user) do |f| %>
+
+        <div class="field">
+        	  <label>画像</label>
+            <p><%= f.file_field :image %></p>
+        </div>
+
+        <div class="field">
+        	 <label>名前</label>
+        	<p><%= f.text_field :user_name %></p>
+        </div>
+
+        <%= f.submit '完了', class: 'btn btn-primary btn-lg' %>
+      <% end %>
+
+</div>
