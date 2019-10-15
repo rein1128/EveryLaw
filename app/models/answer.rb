@@ -1,3 +1,4 @@
 class Answer < ApplicationRecord
-	belangs_to :question
+	belongs_to :question
+	belongs_to :user, -> { with_deleted }
 end

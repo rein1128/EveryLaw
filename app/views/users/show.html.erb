@@ -1,7 +1,30 @@
-<% if @user.image? %>
-    <%= image_tag @user.image.url, fallback: "no_image.jpg", size:200 %>
-<% end %>
-<p>ユーザー名</p>
-<%= @user.user_name %>
-<p>メールアドレス</p>
-<%= @user.email %>
+<div style="margin: 50px 100px">
+	<h2>ユーザー情報</h2>
+	<div style="padding-left: 50px">
+		<% if @user.image.file.nil? %>
+		    <%= image_tag "default.jpg", size: "200x200" %>
+		<% else %>
+		    <%= image_tag @user.image.to_s, size:"200x200" %>
+		<% end %>
+
+		<div style="font-size: 30px; display: inline-block;">
+			<p>ニックネーム</p>
+			<div style="margin-left: 50px">
+				<%= @user.user_name %>
+				<%= link_to "編集", edit_user_path, :class => "btn btn-success" %>
+				<%= link_to "削除", user_path(@user), method: :delete, :class => "btn btn-danger" %>
+			</div>
+		</div>
+
+		<div style="font-size: 25px">
+			<p>総ポイント数</p>
+		</div>
+
+		<div style="font-size: 25px">
+			<p>メールアドレス</p>
+			<div style="margin-left: 50px">
+				<p><%= @user.email %></p>
+			</div>
+		</div>
+	</div>
+</div>

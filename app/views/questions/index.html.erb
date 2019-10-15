@@ -1,7 +1,30 @@
 
-<% @question.each do |q| %>
-<h4>タイトル</h4>
-<p><%= link_to q.title, question_path(q.id) %></p>
-<h4>質問内容</h4>
-<p><%= q.question_content %></p>
+<% @questions.each do |q| %>
+<div style="border: 1px solid black; padding: 5px; margin: 10px">
+	<div class="row">
+	<div style="margin-left: 10px">
+		<div class="col-xs-4">
+		    <h3>質問者</h3>
+			<% if q.user.image.file.nil? %>
+			  <%= image_tag "default.jpg", size:"100x100" %>
+			<% else %>
+			  <%= image_tag q.user.image.to_s, size:"90x90" %>
+			<% end %>
+			<div style="font-size: 25px; display: inline-block">
+			  <% if q.user.deleted_at.nil? %>
+			    <%= link_to q.user.user_name,user_path(q.user.id) %>
+			  <% else %>
+			    <P>退会済みユーザー</P>
+			  <% end %>
+		    </div>
+		</div>
+	    <div class="col-xs-8">
+			<h3>タイトル</h3>
+			  <div style="font-size: 25px; display: inline-block">
+			  	<%= link_to q.title, question_path(q.id) %>
+			  </div>
+		</div>
+	</div>
+    </div>
+</div>
 <% end %>
