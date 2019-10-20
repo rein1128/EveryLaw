@@ -11,10 +11,19 @@
 			  <%= image_tag q.user.image.to_s, size:"90x90" %>
 			<% end %>
 			<div style="font-size: 25px; display: inline-block">
-			  <% if q.user.deleted_at.nil? %>
-			    <%= link_to q.user.user_name,user_path(q.user.id) %>
+			  <% if user_signed_in? %>
+				  <% if q.user.deleted_at.nil? %>
+				    <%= link_to q.user.user_name,user_path(q.user.id) %>
+				  <% else %>
+				  <%= q.user.user_name %>
+				    <P>退会済みユーザー</P>
+				  <% end %>
 			  <% else %>
-			    <P>退会済みユーザー</P>
+			      <% if q.user.deleted_at.nil? %>
+			        <%= q.user.user_name %>
+			      <% else %>
+				    <P>退会済みユーザー</P>
+				  <% end %>
 			  <% end %>
 		    </div>
 		</div>

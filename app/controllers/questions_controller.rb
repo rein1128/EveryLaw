@@ -21,6 +21,6 @@ class QuestionsController < ApplicationController
 
 	private
 	def question_params
-		params.require(:question).permit(:title, :question_content, :deletion_flag, :user_id)
+		params.require(:question).permit(:title, :question_content, :user_id)
 	end
 end
