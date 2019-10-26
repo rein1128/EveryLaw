@@ -71,3 +71,7 @@ gem 'paranoia'
 gem 'activeadmin'
 gem "active_admin_paranoia" , '~> 1.0.11'
 gem "pry-byebug"
+gem "ransack"
+group :production do
+  gem 'mysql2'
+end
