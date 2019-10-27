@@ -35,6 +35,7 @@ gem 'jbuilder', '~> 2.5'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
+#gem 'pg'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -63,3 +64,14 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise'
 gem 'carrierwave'
 gem 'cocoon'
+gem 'bootstrap-sass', '~> 3.4.1'
+gem 'jquery-rails'
+gem 'pry-rails'
+gem 'paranoia'
+gem 'activeadmin'
+gem "active_admin_paranoia" , '~> 1.0.11'
+gem "pry-byebug"
+gem "ransack"
+group :production do
+  gem 'mysql2'
+end

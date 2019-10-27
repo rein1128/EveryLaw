@@ -1,7 +1,90 @@
-<h2>質問者</h2>
-<%= image_tag @question.user.image.url, fallback: "no_image.jpg", size:100 %>
-<%= link_to @question.user.user_name,user_path(@question.user.id) %>
-<h2>タイトル</h2>
-<p><%= @question.title %></p>
-<h2>質問内容</h2>
-<p><%= @question.question_content %></p>
+<div style="margin: 50px 100px">
+	<h2>
+		質問内容
+    </h2>
+	<div style="padding-left: 50px">
+		<div style="border: 1px solid black; padding-left: 20px">
+			<h3>質問者</h3>
+			<div style="padding: 0 0 0 50px">
+				<% if @question.user.image.file.nil? %>
+				  <%= image_tag "default.jpg", size: "100x100" %>
+				<% else %>
+				  <%= image_tag @question.user.image.to_s, size:"100x100" %>
+				<% end %>
+
+				<div style="font-size: 30px; display: inline-block;">
+				  <% if @question.user.deleted_at.nil? %>
+			        <%= link_to @question.user.user_name,user_path(@question.user.id) %>
+			      <% else %>
+			        <P>退会済みユーザー</P>
+			      <% end %>
+			    </div>
+			</div>
+
+			<h3>タイトル</h3>
+			<div style="font-size: 20px; padding-left: 50px">
+			    <%= @question.title %>
+			</div>
+
+			<h3>質問内容</h3>
+			<div style="font-size: 15px; padding: 0 0 20px 50px">
+			    <%= @question.question_content %>
+		    </div>
+	    </div>
+	</div>
+    <h2>回答</h2>
+    <div style="padding-left: 50px">
+	    <% @question.answers.each do |comment| %>
+        <div style="border: 1px solid black; padding-left: 20px; margin-bottom: 30px">
+		    <h3>回答者</h3>
+		    <div style="font-size: 20px; padding: 0 0 0 50px">
+		    	<% if comment.user.image.file.nil? %>
+		    	  <%= image_tag "default.jpg", size: "100x100" %>
+		    	<% else %>
+			      <%= image_tag comment.user.image.to_s, size:"90x90" %>
+			     <% end %>
+
+			    <div style="font-size: 30px; display: inline-block;">
+			    	<% if comment.user.deleted_at.nil? %>
+			          <%= link_to comment.user.user_name,user_path(comment.user.id) %>
+			        <% else %>
+			          <P>退会済みユーザー</P>
+			        <% end %>
+			    </div>
+			</div>
+
+		    <h3>回答内容</h3>
+		    <div style="font-size: 15px; padding: 0 0 30px 50px; border-bottom: 1px solid black">
+		        <%= comment.answer_content %>
+		    </div>
+		    <div style="font-size: 20px; padding-top: 20px">
+		    	<% if comment.point != nil %>
+		          <p>獲得ポイント <%= comment.point.point %> Points</p>
+		          <div style="font-size: 18px; padding-left: 50px">
+		          	<p><%= comment.point.point_comment %></p>
+		          </div>
+		        <% end %>
+		    </div>
+		</div>
+		<% end %>
+	</div>
+
+    <h2>新規回答</h2>
+    <div style="padding-left: 50px">
+    	<% if user_signed_in? %>
+		  <%= form_for [@question, @answer] do |f| %>
+		  <div>
+		      <%= f.text_area :answer_content, class: "form-control", size:"30x15"%>
+		  </div>
+		  <%= f.submit "回答する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
+		  <% end %>
+		<% else %>
+		  <div style="font-size: 25px; color: red">
+		  	<p>ログイン後回答いただけます</p>
+		  	<%= link_to "会員登録", new_user_registration_path %>
+            <%= link_to "ログイン", new_user_session_path %>
+		  </div>
+		<% end %>
+	</div>
+</div>
+

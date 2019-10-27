@@ -1,7 +1,5 @@
 class Question < ApplicationRecord
-	has_many :answer
+	has_many :answers
 
-
-	belongs_to :user
-
+	belongs_to :user, -> { with_deleted }
 end
