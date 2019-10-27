@@ -39,5 +39,17 @@ ActiveAdmin.register Question do
     end
     f.actions
   end
+
+  show do |b|
+    attributes_table do
+      row :id
+      row :user_id
+      row :user_name do |question|
+        raw(User.with_deleted.find_by(id: question.user_id).user_name)
+      end
+      row :title
+      row :question_content
+    end
+  end
   
 end

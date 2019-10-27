@@ -10,4 +10,16 @@ class User < ApplicationRecord
     has_many :answers
     has_many :points
 
+
+    def totle(user_id)
+
+    	points = Point.where(user_id: user_id)
+    	point_count = 0
+    	points.each do |p|
+    		point_count += p.point
+    	end
+
+    	totle = point_count
+    end
+
 end

@@ -1,4 +1,5 @@
 ActiveAdmin.register User do
+    active_admin_paranoia
 
   permit_params :user_name, :email, :password, :image
 
@@ -43,7 +44,6 @@ ActiveAdmin.register User do
       row :email
       row :user_name
       row :id
-      # show画面で画像を表示するためのタグを追加
       row :image do |cw|
         unless cw.image.file.nil?
           image_tag(user.image.url)

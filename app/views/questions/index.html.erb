@@ -32,6 +32,9 @@
 			  <div style="font-size: 25px; display: inline-block">
 			  	<%= link_to q.title, question_path(q.id) %>
 			  </div>
+			  <div style="font-size: 18px">
+			  	<p><%= q.question_content.truncate(83) %></p>
+			  </div>
 		</div>
 	</div>
     </div>

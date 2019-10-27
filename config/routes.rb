@@ -13,4 +13,5 @@ Rails.application.routes.draw do
   root 'questions#index'
 
   resources :users, only: [:edit, :update, :show, :destroy]
+  get 'user/about' => 'users#about'
 end

@@ -54,8 +54,16 @@
 			</div>
 
 		    <h3>回答内容</h3>
-		    <div style="font-size: 15px; padding: 0 0 0 50px">
+		    <div style="font-size: 15px; padding: 0 0 30px 50px; border-bottom: 1px solid black">
 		        <%= comment.answer_content %>
+		    </div>
+		    <div style="font-size: 20px; padding-top: 20px">
+		    	<% if comment.point != nil %>
+		          <p>獲得ポイント <%= comment.point.point %> Points</p>
+		          <div style="font-size: 18px; padding-left: 50px">
+		          	<p><%= comment.point.point_comment %></p>
+		          </div>
+		        <% end %>
 		    </div>
 		</div>
 		<% end %>
@@ -73,6 +81,8 @@
 		<% else %>
 		  <div style="font-size: 25px; color: red">
 		  	<p>ログイン後回答いただけます</p>
+		  	<%= link_to "会員登録", new_user_registration_path %>
+            <%= link_to "ログイン", new_user_session_path %>
 		  </div>
 		<% end %>
 	</div>

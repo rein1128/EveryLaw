@@ -17,6 +17,20 @@ ActiveAdmin.register Answer do
   #   permitted
   # end
 
+
+  index do
+     selectable_column
+     id_column
+     column :user_id
+     column :question_id
+     column :user_name do |answer|
+        raw(User.with_deleted.find_by(id: answer.user_id).user_name)
+    end
+     column :created_at
+     column :updated_at
+     actions
+  end
+
   form do |f|
     f.inputs "Questions" do
       f.input :user_id
@@ -24,6 +38,18 @@ ActiveAdmin.register Answer do
       f.input :answer_content
     end
     f.actions
+  end
+
+  show do |b|
+    attributes_table do
+      row :id
+      row :question_id
+      row :user_id
+      row :user_name do |answer|
+        raw(User.with_deleted.find_by(id: answer.user_id).user_name)
+      end
+      row :answer_content
+    end
   end
   
 end
