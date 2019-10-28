@@ -7,7 +7,7 @@
 		    <%= image_tag @user.image.to_s, size:"200x200" %>
 		<% end %>
 
-		<div style="font-size: 30px; display: inline-block;">
+		<div style="font-size: 40px; display: inline-block; margin-left: 50px">
 			<p>ニックネーム</p>
 			<div style="margin-left: 50px">
 				<%= @user.user_name %>
@@ -20,7 +20,7 @@
 
 		<div style="font-size: 25px; margin-bottom: 50px">
 			<p>総ポイント数</p>
-			<%= @user.totle(@user.id) %>
+			<%= "#{@user.totle(@user.id)}pt" %>
 		</div>
 
         <% if @user.id == current_user.id %>

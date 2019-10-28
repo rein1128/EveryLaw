@@ -74,4 +74,5 @@ gem "pry-byebug"
 gem "ransack"
 group :production do
   gem 'mysql2'
+  gem 'kaminari','~> 1.1.1'
 end

@@ -1,42 +1,48 @@
-
 <% @questions.each do |q| %>
 <div style="border: 1px solid black; padding: 5px; margin: 10px">
 	<div class="row">
-	<div style="margin-left: 10px">
-		<div class="col-xs-4">
-		    <h3>質問者</h3>
-			<% if q.user.image.file.nil? %>
-			  <%= image_tag "default.jpg", size:"100x100" %>
-			<% else %>
-			  <%= image_tag q.user.image.to_s, size:"90x90" %>
-			<% end %>
-			<div style="font-size: 25px; display: inline-block">
-			  <% if user_signed_in? %>
-				  <% if q.user.deleted_at.nil? %>
-				    <%= link_to q.user.user_name,user_path(q.user.id) %>
-				  <% else %>
-				  <%= q.user.user_name %>
-				    <P>退会済みユーザー</P>
-				  <% end %>
-			  <% else %>
-			      <% if q.user.deleted_at.nil? %>
-			        <%= q.user.user_name %>
-			      <% else %>
-				    <P>退会済みユーザー</P>
-				  <% end %>
-			  <% end %>
-		    </div>
+		<div style="margin-left: 10px">
+			<div class="col-xs-1">
+			    <h3>質問者</h3>
+				<% if q.user.image.file.nil? %>
+				  <%= image_tag "default.jpg", size:"100x100" %>
+				<% else %>
+				  <%= image_tag q.user.image.to_s, size:"90x90" %>
+				<% end %>
+			</div>
+			<div class="col-xs-3">
+				<div style="font-size: 25px; display: inline-block; margin-top: 15px">
+				  <p><%= q.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
+				  <div style="font-size: 30px; margin-top: 20px">
+					  <% if user_signed_in? %>
+						  <% if q.user.deleted_at.nil? %>
+						    <%= link_to q.user.user_name,user_path(q.user.id) %>
+						  <% else %>
+						  <%= q.user.user_name %>
+						    <P>退会済みユーザー</P>
+						  <% end %>
+					  <% else %>
+					      <% if q.user.deleted_at.nil? %>
+					        <%= q.user.user_name %>
+					      <% else %>
+						    <P>退会済みユーザー</P>
+						  <% end %>
+					  <% end %>
+				  </div>
+			    </div>
+			</div>
+		    <div class="col-xs-8">
+				<h3>タイトル</h3>
+				  <div style="font-size: 25px; display: inline-block">
+				  	<%= link_to q.title, question_path(q.id) %>
+				  </div>
+				  <div style="font-size: 18px">
+				  	<p><%= q.question_content.truncate(83) %></p>
+				  </div>
+			</div>
 		</div>
-	    <div class="col-xs-8">
-			<h3>タイトル</h3>
-			  <div style="font-size: 25px; display: inline-block">
-			  	<%= link_to q.title, question_path(q.id) %>
-			  </div>
-			  <div style="font-size: 18px">
-			  	<p><%= q.question_content.truncate(83) %></p>
-			  </div>
-		</div>
-	</div>
     </div>
 </div>
 <% end %>
+
+<%= paginate @questions %>

@@ -180,7 +180,6 @@ GEM
     orm_adapter (0.5.0)
     paranoia (2.4.2)
       activerecord (>= 4.0, < 6.1)
-    pg (1.1.4)
     polyamorous (2.3.0)
       activerecord (>= 5.0)
     pry (0.12.2)
@@ -316,10 +315,10 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.5)
   jquery-rails
+  kaminari (~> 1.1.1)
   listen (>= 3.0.5, < 3.2)
   mysql2
   paranoia
-  pg
   pry-byebug
   pry-rails
   puma (~> 3.11)

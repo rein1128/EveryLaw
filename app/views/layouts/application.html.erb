@@ -15,11 +15,25 @@
         <div style="margin-left: 120px; display: inline-block">
           <%= image_tag "logo.png", size: "160x120" %>
         </div>
-        
-        <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-        <%= link_to "質問一覧", root_path %>
-        <%= link_to "新規質問", new_question_path %>
-        <%= link_to "マイページ", user_path(current_user.id) %>
+        <div style="margin-left: 120px; display: inline-block">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </div>
+        <div style="margin-left: 100px; display: inline-block">
+          <%= link_to "質問一覧", questions_path %>
+        </div>
+        <div style="margin-left: 100px; display: inline-block">
+          <%= link_to "新規質問", new_question_path %>
+        </div>
+        <div style="margin-left: 100px; display: inline-block">
+          <%= link_to "マイページ", user_path(current_user.id) %>
+        </div>
+        <div style="text-align: center; padding-bottom: 20px">
+          <%= search_form_for @q do |f| %>
+          <%= f.label :"タイトル検索" %>
+          <%= f.search_field :title_cont %>
+          <%= f.submit %>
+          <% end %>
+        </div>
       <% else %>
         <div style="margin-left: 120px; display: inline-block">
           <%= image_tag "logo.png", size: "160x120" %>
@@ -31,10 +45,19 @@
           <%= link_to "ログイン", new_user_session_path %>
         </div>
         <div style="margin-left: 100px; display: inline-block">
-          <%= link_to "質問一覧", root_path %>
+          <%= link_to "質問一覧", questions_path %>
         </div>
         <div style="margin-left: 100px; display: inline-block">
           <%= link_to "about", user_about_path %>
+        </div>
+        <div>
+          <div style="text-align: center; padding-bottom: 20px">
+            <%= search_form_for @q do |f| %>
+            <%= f.label :"タイトル検索" %>
+            <%= f.search_field :title_cont %>
+            <%= f.submit %>
+            <% end %>
+          </div>
         </div>
       <% end %>
     </header>

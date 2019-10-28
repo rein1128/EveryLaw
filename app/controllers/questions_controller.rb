@@ -1,7 +1,14 @@
 class QuestionsController < ApplicationController
+
 	def index
-		@questions = Question.all.order(created_at: "DESC")
+		@q = Question.ransack(params[:q])
+		@questions = @q.result(distinct: true).page(params[:page]).per(25).order(created_at: "DESC")
 	end
+
+	def search
+	   @q = Question.search(search_params)
+	   @questions = @q.result(distinct: true)
+	 end
 
 	def show
 		@question = Question.find(params[:id])
@@ -23,4 +30,8 @@ class QuestionsController < ApplicationController
 	def question_params
 		params.require(:question).permit(:title, :question_content, :user_id)
 	end
+
+	def search_params
+    	params.require(:q).permit!
+  	end
 end

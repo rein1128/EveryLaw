@@ -1,4 +1,6 @@
 class UsersController < ApplicationController
+  before_action :correct_user, only: [:edit, :update, :destroy]
+
   def new
   end
 
@@ -30,5 +32,12 @@ class UsersController < ApplicationController
   private
   def user_params
   	params.require(:user).permit(:user_name, :image, :email)
+  end
+
+  def correct_user
+    @user=User.find(params[:id])
+    if @user != current_user
+      redirect_to questions_path
+    end
   end
 end
