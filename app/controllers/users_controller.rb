@@ -23,6 +23,7 @@ class UsersController < ApplicationController
     user = User.find(params[:id])
     user.destroy
     redirect_to root_path
+    flash[:notice] = "会員情報を削除しました。"
   end
 
   def about

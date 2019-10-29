@@ -10,9 +10,9 @@
   </head>
 
   <body>
-    <header class="container-fluid" style="border-bottom: 1px solid black; margin-top: 20px; font-size: 30px">
+    <header class="container-fluid" style="border-bottom: 1px solid black; font-size: 30px; background-color: #C0C0C0">
       <% if user_signed_in? %>
-        <div style="margin-left: 120px; display: inline-block">
+        <div style="margin-left: 120px; display: inline-block; margin-top: 20px">
           <%= image_tag "logo.png", size: "160x120" %>
         </div>
         <div style="margin-left: 120px; display: inline-block">
@@ -35,7 +35,7 @@
           <% end %>
         </div>
       <% else %>
-        <div style="margin-left: 120px; display: inline-block">
+        <div style="margin-left: 120px; display: inline-block; margin-top: 20px">
           <%= image_tag "logo.png", size: "160x120" %>
         </div>
         <div style="margin-left: 100px; display: inline-block">
@@ -62,5 +62,7 @@
       <% end %>
     </header>
     <%= yield %>
+    <footer style="height: 100px; background-color: #C0C0C0">
+    </footer>
   </body>
 </html>

@@ -7,8 +7,9 @@ class AnswersController < ApplicationController
   	question = Question.find(params[:question_id])
     answer = current_user.answers.new(answer_params)
   	answer.question_id = params[:question_id]
-  	answer.save!
+  	answer.save
   	redirect_to question_path(question)
+    flash[:notice] = "投稿完了しました"
   end
 
   private

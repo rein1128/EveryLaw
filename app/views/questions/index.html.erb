@@ -1,3 +1,7 @@
+<% if flash[:notice] %>
+<%= flash[:notice] %>
+<% end %>
+
 <% @questions.each do |q| %>
 <div style="border: 1px solid black; padding: 5px; margin: 10px">
 	<div class="row">

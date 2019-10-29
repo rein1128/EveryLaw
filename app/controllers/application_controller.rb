@@ -2,14 +2,15 @@ class ApplicationController < ActionController::Base
 	protect_from_forgery with: :exception
 
     before_action :configure_permitted_parameters, if: :devise_controller?
-
-    if !:current_admin_user
-      before_action :set_search
-    end
+    before_action :set_search
 
     def set_search
       @q = Question.ransack(params[:q])
-      @questions = @q.result.includes(:titles).page(params[:page]).per(25)
+      if admin_user_signed_in?
+        #@questions = Question.page(params[:page]).per(25)
+      else
+        @questions = @q.result.includes(:titles).page(params[:page]).per(25)
+      end
     end
 
     protected

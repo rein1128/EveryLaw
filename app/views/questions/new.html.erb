@@ -1,3 +1,13 @@
+<% if @question.errors.any? %>
+  <div class="alert alert-warning">
+    <ul>
+      <% @question.errors.full_messages.each do |question| %>
+        <li><%= question %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div style="margin: 50px 100px">
 	<h1>新規投稿</h1>
 	<div style="padding-left: 50px">

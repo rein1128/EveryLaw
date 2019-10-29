@@ -22,8 +22,12 @@ class QuestionsController < ApplicationController
 	def create
 		@question = Question.new(question_params)
 		@question.user_id = current_user.id
-		@question.save
-		redirect_to root_path
+		if @question.save
+		   redirect_to root_path
+		   flash[:notice] = "質問投稿完了しました"
+		else
+		    render("new")
+		end
 	end
 
 	private
