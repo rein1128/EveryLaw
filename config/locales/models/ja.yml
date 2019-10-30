@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    models:
+      question: 質問
+    attributes:
+      question:
+        title: タイトル
+        question_content: 本文

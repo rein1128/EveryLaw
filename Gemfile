@@ -72,7 +72,8 @@ gem 'activeadmin'
 gem "active_admin_paranoia" , '~> 1.0.11'
 gem "pry-byebug"
 gem "ransack"
+gem 'kaminari','~> 1.1.1'
+gem 'rails-i18n'
 group :production do
   gem 'mysql2'
-  gem 'kaminari','~> 1.1.1'
 end
