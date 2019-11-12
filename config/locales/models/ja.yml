@@ -2,7 +2,16 @@ ja:
   activerecord:
     models:
       question: 質問
+      contact: 問い合わせ
+      user: ユーザー
+      point: ポイント
+      answer: 回答
+      admin_user: 運営
     attributes:
       question:
         title: タイトル
         question_content: 本文
+      contact:
+        title: タイトル
+        body: 問い合わせ内容
+        address: メールアドレス

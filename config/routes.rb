@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'contacts/new'
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   get 'points/new'
@@ -13,4 +14,6 @@ Rails.application.routes.draw do
 
   resources :users, only: [:edit, :update, :show, :destroy]
   get 'user/about' => 'users#about'
+
+  resources :contacts, only: [:new, :create]
 end
