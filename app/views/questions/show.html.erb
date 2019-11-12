@@ -59,7 +59,7 @@
 					</div>
 					<div class="col-xs-9">
 						<h3><%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></h3>
-						<div style="font-size: 40px; display: inline-block; margin-top: 70px">
+						<div style="font-size: 40px; display: inline-block; margin-top: 10px">
 						    <% if comment.user.deleted_at.nil? %>
 						      <%= link_to comment.user.user_name,user_path(comment.user.id) %>
 						    <% else %>
