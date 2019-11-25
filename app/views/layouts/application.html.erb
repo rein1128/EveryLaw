@@ -10,27 +10,27 @@
   </head>
 
   <body>
-    <header class="container-fluid" style="border-bottom: 1px solid black; font-size: 30px; background-color: #C0C0C0">
+    <header class="container-fluid">
       <% if user_signed_in? %>
-        <div style="margin-left: 50px; display: inline-block; margin-top: 20px">
+        <div class="header_logo">
           <%= image_tag "logo.png", size: "160x120" %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "質問一覧", questions_path %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "新規質問", new_question_path %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "マイページ", user_path(current_user.id) %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "問い合わせ", new_contact_path %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
         </div>
-        <div style="text-align: center; padding-bottom: 20px">
+        <div class="search">
           <%= search_form_for @q do |f| %>
           <%= f.label :"タイトル検索" %>
           <%= f.search_field :title_cont %>
@@ -38,26 +38,26 @@
           <% end %>
         </div>
       <% else %>
-        <div style="margin-left: 50px; display: inline-block; margin-top: 20px">
+        <div class="header_logo">
           <%= image_tag "logo.png", size: "160x120" %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "会員登録", new_user_registration_path %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "ログイン", new_user_session_path %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "質問一覧", questions_path %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "初めての方", user_about_path %>
         </div>
-        <div style="margin-left: 70px; display: inline-block">
+        <div class="header_content">
           <%= link_to "問い合わせ", new_contact_path %>
         </div>
         <div>
-          <div style="text-align: center; padding-bottom: 20px">
+          <div class="search">
             <%= search_form_for @q do |f| %>
             <%= f.label :"タイトル検索" %>
             <%= f.search_field :title_cont %>
@@ -68,7 +68,7 @@
       <% end %>
     </header>
     <%= yield %>
-    <footer style="height: 100px; background-color: #C0C0C0; text-align: center; padding-top: 10px">
+    <footer>
       <%= image_tag "logo.png", size: "140x90" %>
     </footer>
   </body>

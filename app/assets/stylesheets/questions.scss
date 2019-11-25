@@ -1,3 +1,84 @@
 // Place all the styles related to the questions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.question_main {
+	border: 1px solid black; padding: 5px; margin: 10px;
+}
+
+.question_main_sub {
+	margin-left: 10px;
+}
+
+.time {
+	font-size: 25px; display: inline-block; margin-top: 15px;
+}
+
+.question_secondary {
+	font-size: 30px; margin-top: 20px;
+}
+
+.question_index_title {
+	font-size: 25px; display: inline-block;
+}
+
+.question_index_body {
+	font-size: 18px;
+}
+
+.question_global {
+	margin: 50px 100px;
+}
+
+.question_new {
+	padding-left: 50px;
+}
+
+.question_show_primary {
+	border: 1px solid black; padding-left: 20px; display: inline-block; width: 100%;
+}
+
+.question_user {
+	padding: 0 0 0 50px;
+}
+
+.question_user_sub {
+	font-size: 40px; display: inline-block; margin-top: 30px;
+}
+
+.question_title {
+	font-size: 20px; padding-left: 50px;
+}
+
+.question_body {
+	font-size: 15px; padding: 0 0 20px 50px;
+}
+
+.answer {
+	border: 1px solid black; padding-left: 20px; margin-bottom: 30px;
+}
+
+.answer_user {
+	font-size: 20px; padding: 0 0 0 50px;
+}
+
+.answer_user_sub {
+	font-size: 40px; display: inline-block; margin-top: 10px;
+}
+
+.answer_body {
+	font-size: 15px; padding: 0 0 30px 50px; border-bottom: 1px solid black;
+}
+
+.admin {
+	font-size: 20px; padding-top: 20px;
+}
+
+.point {
+	font-size: 18px; padding-left: 50px;
+}
+
+.new_answer {
+	font-size: 25px; color: red;
+}

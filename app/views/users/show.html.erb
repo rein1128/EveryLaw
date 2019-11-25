@@ -1,15 +1,15 @@
-<div style="margin: 50px 100px">
+<div class="global">
 	<h2>ユーザー情報</h2>
-	<div style="padding-left: 50px">
+	<div class="primary">
 		<% if @user.image.file.nil? %>
 		    <%= image_tag "default.jpg", size: "200x200" %>
 		<% else %>
 		    <%= image_tag @user.image.to_s, size:"200x200" %>
 		<% end %>
 
-		<div style="font-size: 40px; display: inline-block; margin-left: 50px">
+		<div class="main">
 			<p>ニックネーム</p>
-			<div style="margin-left: 50px">
+			<div class="secondary">
 				<%= @user.user_name %>
 				<% if @user.id == current_user.id %>
 				  <%= link_to "編集", edit_user_path, :class => "btn btn-success" %>
@@ -18,37 +18,37 @@
 			</div>
 		</div>
 
-		<div style="font-size: 25px; margin-bottom: 50px">
+		<div class="tertiary">
 			<p>総ポイント数</p>
-			<%= "#{@user.totle(@user.id)}pt" %>
+			<%= "#{@user.total(@user.id)}pt" %>
 		</div>
 
         <% if @user.id == current_user.id %>
-		<div style="font-size: 25px; margin-bottom: 50px">
+		<div class="tertiary">
 			<p>メールアドレス</p>
-			<div style="margin-left: 50px">
+			<div class="secondary">
 				<p><%= @user.email %></p>
 			</div>
 		</div>
 		<% end %>
 
         <div class="row">
-			<div style="font-size: 25px">
+			<div class="tertiary_sub">
 				<div class="col-xs-6">
 					<p>質問一覧</p>
 					<% @user.questions.order(created_at: :desc).each do |q| %>
-					<div style="margin-left: 50px">
+					<div class="secondary">
 						<%= link_to q.title, question_path(q.id) %>
 					</div>
 					<% end %>
 			    </div>
 			</div>
 
-			<div style="font-size: 25px">
+			<div class="tertiary_sub">
 				<div class="col-xs-6">
 					<p>回答した質問</p>
 					<% @user.answers.order(created_at: :desc).each do |a| %>
-					<div style="margin-left: 50px">
+					<div class="secondary">
 						<%= link_to a.question.title, question_path(a.id) %>
 					</div>
 					<% end %>

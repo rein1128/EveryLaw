@@ -3,9 +3,9 @@
 <% end %>
 
 <% @questions.each do |q| %>
-<div style="border: 1px solid black; padding: 5px; margin: 10px">
+<div class="question_main">
 	<div class="row">
-		<div style="margin-left: 10px">
+		<div class="question_main_sub">
 			<div class="col-xs-1">
 			    <h3>質問者</h3>
 				<% if q.user.image.file.nil? %>
@@ -15,9 +15,9 @@
 				<% end %>
 			</div>
 			<div class="col-xs-3">
-				<div style="font-size: 25px; display: inline-block; margin-top: 15px">
+				<div class="time">
 				  <p><%= q.created_at.strftime("%Y年%m月%d日 %H:%M") %></p>
-				  <div style="font-size: 30px; margin-top: 20px">
+				  <div class="question_secondary">
 					  <% if user_signed_in? %>
 						  <% if q.user.deleted_at.nil? %>
 						    <%= link_to q.user.user_name,user_path(q.user.id) %>
@@ -37,10 +37,10 @@
 			</div>
 		    <div class="col-xs-8">
 				<h3>タイトル</h3>
-				  <div style="font-size: 25px; display: inline-block">
+				  <div class="question_index_title">
 				  	<%= link_to q.title, question_path(q.id) %>
 				  </div>
-				  <div style="font-size: 18px">
+				  <div class="question_index_body">
 				  	<p><%= q.question_content.truncate(83) %></p>
 				  </div>
 			</div>

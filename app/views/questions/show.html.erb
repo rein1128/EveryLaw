@@ -2,14 +2,14 @@
 <%= flash[:notice] %>
 <% end %>
 
-<div style="margin: 50px 100px">
+<div class="question_golbal">
 	<h2>質問内容</h2>
-	<div style="padding-left: 50px">
-		<div style="border: 1px solid black; padding-left: 20px; display: inline-block; width: 100%">
+	<div class="question_new">
+		<div class="question_show_primary">
 			<div class="row">
 				<div class="col-xs-3">
 					<h3>質問者</h3>
-					<div style="padding: 0 0 0 50px">
+					<div class="question_user">
 						<% if @question.user.image.file.nil? %>
 						  <%= image_tag "default.jpg", size: "100x100" %>
 						<% else %>
@@ -20,7 +20,7 @@
 
                 <div class="col-xs-9">
 		            <h3><%= @question.created_at.strftime("%Y年%m月%d日 %H:%M") %></h3>
-					<div style="font-size: 40px; display: inline-block; margin-top: 30px">
+					<div class="question_user_sub">
 						 <% if @question.user.deleted_at.nil? %>
 					       <%= link_to @question.user.user_name,user_path(@question.user.id) %>
 					     <% else %>
@@ -31,25 +31,25 @@
 			</div>
 
 			<h3>タイトル</h3>
-			<div style="font-size: 20px; padding-left: 50px">
+			<div class="queston_title">
 			    <%= @question.title %>
 			</div>
 
 			<h3>質問内容</h3>
-			<div style="font-size: 15px; padding: 0 0 20px 50px">
+			<div class="question_body">
 			    <%= @question.question_content %>
 		    </div>
 	    </div>
 	</div>
 
     <h2>回答</h2>
-    <div style="padding-left: 50px">
+    <div class="question_new">
 	    <% @question.answers.each do |comment| %>
-	        <div style="border: 1px solid black; padding-left: 20px; margin-bottom: 30px">
+	        <div class="answer">
 	        	<div class="row">
 	        		<div class="col-xs-3">
 					    <h3>回答者</h3>
-					    <div style="font-size: 20px; padding: 0 0 0 50px">
+					    <div class="answer_user">
 					    	<% if comment.user.image.file.nil? %>
 					    	  <%= image_tag "default.jpg", size: "100x100" %>
 					    	<% else %>
@@ -59,7 +59,7 @@
 					</div>
 					<div class="col-xs-9">
 						<h3><%= comment.created_at.strftime("%Y年%m月%d日 %H:%M") %></h3>
-						<div style="font-size: 40px; display: inline-block; margin-top: 10px">
+						<div class="answer_user_sub">
 						    <% if comment.user.deleted_at.nil? %>
 						      <%= link_to comment.user.user_name,user_path(comment.user.id) %>
 						    <% else %>
@@ -69,11 +69,11 @@
 					</div>
 				</div>
 				<h3>回答内容</h3>
-				<div style="font-size: 15px; padding: 0 0 30px 50px; border-bottom: 1px solid black">
+				<div class="answer_body">
 					<%= comment.answer_content %>
 				</div>
-				<div style="font-size: 20px; padding-top: 20px">
-					<div style="font-size: 18px; padding-left: 50px">
+				<div class="admin">
+					<div class="point">
 						<% if comment.point != nil %>
 						  <p>獲得ポイント <%= comment.point.point %> Points</p>
 						     <p><%= comment.point.point_comment %></p>
@@ -87,7 +87,7 @@
 	</div>
 
     <h2>新規回答</h2>
-    <div style="padding-left: 50px">
+    <div class="question_new">
     	<% if user_signed_in? %>
 		  <%= form_for [@question, @answer] do |f| %>
 		  <div>
@@ -96,7 +96,7 @@
 		  <%= f.submit "回答する", class: "btn btn-lg btn-base-1 mt-20 pull-right" %>
 		  <% end %>
 		<% else %>
-		  <div style="font-size: 25px; color: red">
+		  <div class="new_answer">
 		  	<p>ログイン後回答いただけます</p>
 		  	<%= link_to "会員登録", new_user_registration_path %>
             <%= link_to "ログイン", new_user_session_path %>

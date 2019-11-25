@@ -11,7 +11,7 @@ class User < ApplicationRecord
     has_many :points
 
 
-    def totle(user_id)
+    def total(user_id)
 
     	points = Point.where(user_id: user_id)
     	point_count = 0
@@ -19,7 +19,7 @@ class User < ApplicationRecord
     		point_count += p.point
     	end
 
-    	totle = point_count
+    	total = point_count
     end
 
 end
